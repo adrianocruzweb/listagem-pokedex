@@ -1,12 +1,13 @@
 const pokemonOL = document.querySelector('.pokemons');
 const loadMOreButton = document.getElementById('loadMore');
-const limit = 5;
+const maxRecord = 150;
+const limit = 10;
 let offset = 0;
 
 
 const convertPokemonAPIDetailtoPokemon = (pokeDetail) => {
     const pokemon = new Pokemon();
-    pokemon.number = pokeDetail.order;
+    pokemon.number = pokeDetail.id;
     pokemon.name = pokeDetail.name;
 
     const types = pokeDetail.types.map(typeSlot=>typeSlot.type?.name);
@@ -42,5 +43,13 @@ loadPokemonItens(offset, limit);
 
 loadMOreButton.addEventListener('click', () => {
     offset += limit;
-    loadPokemonItens(offset, limit);
+    const qtdRecordNextPage = offset - limit;
+    if(qtdRecordNextPage >= maxQtdRecord) {
+        const newLimit = maxRecord - offset;
+        loadPokemonItens(offset, newLimit);
+
+        loadMOreButton.parentElement.removeChild(loadMOreButton);
+    }else{
+        loadPokemonItens(offset, limit);
+    }
 })
