@@ -1,9 +1,3 @@
-
-
-const offset = 0;
-const limit = 10;
-const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
-
 const convertPokemonToHtml = (pokemon) => {
 
     console.log(pokemon);
@@ -21,14 +15,10 @@ const convertPokemonToHtml = (pokemon) => {
             </li>`;
 }
 
-fetch(url).then((res)=>{
-    return res.json();
-}).then((jsonBody)=>jsonBody.results
-).then((pokemonList)=>{
-    const pokemonHtml = pokemonList.map(item => convertPokemonToHtml(item)).join('');
-    document.querySelector('.pokemons').innerHTML = pokemonHtml;
-}).catch((err)=>{
-    console.error(err);
-}).finally(()=>{
-    console.log("acabou");
-})
+pokeAPI.getPokemons()
+    .then(
+        (pokemonList)=>{
+            const pokemonHtml = pokemonList.map(item => convertPokemonToHtml(item)).join('');
+            document.querySelector('.pokemons').innerHTML = pokemonHtml;
+        }
+    );
