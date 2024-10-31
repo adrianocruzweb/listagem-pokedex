@@ -39,8 +39,7 @@
 
 .pokemon .description img {
     max-width: 100%;
-    height: 70px;
-    /* padding: 0.5rem; */
+    height: 80px;
 }
 
 .pokemon .description .types {
@@ -75,3 +74,26 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
+
+  /*
+
+Bug          #94bc4a
+Dark         #736c75
+Dragon       #6a7baf
+Electric     #e5c531
+Fairy        #e397d1
+Fighting     #cb5f48
+Fire         #ea7a3c
+Flying       #7da6de
+Ghost        #846ab6
+Grass        #71c558
+Ground       #cc9f4f
+Ice          #70cbd4
+Normal       #aab09f
+Poison       #b468b7
+Psychic      #e5709b
+Rock         #b2a061
+Steel        #89a1b0
+Water        #539ae2
+
+*/

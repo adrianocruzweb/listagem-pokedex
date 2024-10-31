@@ -1,25 +1,36 @@
-const convertPokemonToHtml = (pokemon) => {
+const convertPokemonAPIDetailtoPokemon = (pokeDetail) => {
+    const pokemon = new Pokemon();
+    pokemon.number = pokeDetail.order;
+    pokemon.name = pokeDetail.name;
 
-    return `<li class="pokemon">
-                <span class="number">#${pokemon.id}</span>
+    const types = pokeDetail.types.map(typeSlot=>typeSlot.type?.name);
+    const [type] = types;
+
+    pokemon.types = types;
+    pokemon.type = type;
+    pokemon.imgUrl = pokeDetail.sprites?.other?.dream_world?.front_default;
+
+    return pokemon;
+}
+
+
+
+const convertPokemonToHtml = (pokemon) => {
+    return `<li class="pokemon ${pokemon.type}">
+                <span class="number">#${pokemon.number}</span>
                 <span class="name">${pokemon.name}</span>
                 <div class="description">
                     <ol class="types">
-                        ${pokemon.types.map(type => `<li class="type">${type.type.name}</li>`).join('')}
+                        ${pokemon.types.map((type) => `<li class="type">${type}</li>`).join('')}
                     </ol>
-                    <img src="${pokemon.sprites.other.dream_world.front_default}" alt="${pokemon.name}">
+                    <img src="${pokemon.imgUrl}" alt="${pokemon.name}">
                 </div>
             </li>`;
 }
 
 pokeAPI.getPokemons()
-    .then(
-        (pokemon)=>{
-            console.log(pokemon);
-            document.querySelector('.pokemons').innerHTML = pokemon.map(convertPokemonToHtml).join('');
-        }
-    );
-
+    .then(detailedPokemonList=>detailedPokemonList.map(convertPokemonAPIDetailtoPokemon))
+    .then(pokemonList => document.querySelector('.pokemons').innerHTML = pokemonList.map(convertPokemonToHtml).join(''))
 
 
 

@@ -4,7 +4,7 @@ const nameList = []
 
 const getPokemonDetail = (pokemon) => {
     return fetch(pokemon.url)
-        .then((response) => response.json());
+        .then((response) => response.json())
 }
 
 pokeAPI.getPokemons = (offset = 0, limit = 10) => {
