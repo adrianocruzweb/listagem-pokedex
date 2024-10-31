@@ -1,3 +1,9 @@
+const pokemonOL = document.querySelector('.pokemons');
+const loadMOreButton = document.getElementById('loadMore');
+const limit = 5;
+let offset = 0;
+
+
 const convertPokemonAPIDetailtoPokemon = (pokeDetail) => {
     const pokemon = new Pokemon();
     pokemon.number = pokeDetail.order;
@@ -13,8 +19,6 @@ const convertPokemonAPIDetailtoPokemon = (pokeDetail) => {
     return pokemon;
 }
 
-
-
 const convertPokemonToHtml = (pokemon) => {
     return `<li class="pokemon ${pokemon.type}">
                 <span class="number">#${pokemon.number}</span>
@@ -28,9 +32,15 @@ const convertPokemonToHtml = (pokemon) => {
             </li>`;
 }
 
-pokeAPI.getPokemons()
-    .then(detailedPokemonList=>detailedPokemonList.map(convertPokemonAPIDetailtoPokemon))
-    .then(pokemonList => document.querySelector('.pokemons').innerHTML = pokemonList.map(convertPokemonToHtml).join(''))
+const loadPokemonItens = (offser, limit) => {
+    pokeAPI.getPokemons(offser, limit)
+        .then(detailedPokemonList=>detailedPokemonList.map(convertPokemonAPIDetailtoPokemon))
+        .then(pokemonList => pokemonOL.innerHTML += pokemonList.map(convertPokemonToHtml).join(''))
+}
 
+loadPokemonItens(offset, limit);
 
-
+loadMOreButton.addEventListener('click', () => {
+    offset += limit;
+    loadPokemonItens(offset, limit);
+})
