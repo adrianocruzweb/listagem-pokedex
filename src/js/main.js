@@ -21,7 +21,7 @@ const convertPokemonToHtml = (pokemon) => {
                 <span class="name">${pokemon.name}</span>
                 <div class="description">
                     <ol class="types">
-                        ${pokemon.types.map((type) => `<li class="type">${type}</li>`).join('')}
+                        ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
                     </ol>
                     <img src="${pokemon.imgUrl}" alt="${pokemon.name}">
                 </div>

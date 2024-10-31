@@ -28,6 +28,8 @@
 .pokemon .name {
     color: #fff;
     margin-bottom: 0.25rem;
+    text-transform: capitalize;
+    font-weight: bold;
 }
 
 .pokemon .description {
@@ -49,12 +51,69 @@
 }
 
 .pokemon .description .types .type {
-    background-color:#61e1ca;
+   /*  background-color:#61e1ca; */
     color: #fff;
     padding: .25rem .5rem;
     margin: .25rem 0;
     font-size: .625rem;
     border-radius: 1rem;
+    filter: brightness(1.1);
+    text-align: center;
+}
+
+.bug {
+    background-color: #94bc4a;
+}
+.dark {
+    background-color: #736c75;
+}
+.dragon {
+    background-color: #6a7baf;
+}
+.electric {
+    background-color: #e5c531;
+}
+.fairy {
+    background-color: #e397d1;
+}
+.fighting {
+    background-color: #cb5f48;
+}
+.fire {
+    background-color: #ea7a3c;
+}
+.flying {
+    background-color: #7da6de;
+}
+.ghost {
+    background-color: #846ab6;
+}
+.grass {
+    background-color: #71c558;
+}
+.ground {
+    background-color: #cc9f4f;
+}
+.ice {
+    background-color: #70cbd4;
+}
+.normal {
+    background-color: #aab09f;
+}
+.poison {
+    background-color: #b468b7;
+}
+.psychic {
+    background-color: #e5709b;
+}
+.rock {
+    background-color: #b2a061;
+}
+.steel {
+    background-color: #89a1b0;
+}
+.water {
+    background-color: #539ae2;
 }
 
 @media screen and (min-width:380px){
@@ -75,25 +134,7 @@
     }
 }
 
-  /*
 
-Bug          #94bc4a
-Dark         #736c75
-Dragon       #6a7baf
-Electric     #e5c531
-Fairy        #e397d1
-Fighting     #cb5f48
-Fire         #ea7a3c
-Flying       #7da6de
-Ghost        #846ab6
-Grass        #71c558
-Ground       #cc9f4f
-Ice          #70cbd4
-Normal       #aab09f
-Poison       #b468b7
-Psychic      #e5709b
-Rock         #b2a061
-Steel        #89a1b0
-Water        #539ae2
 
-*/
+
+
