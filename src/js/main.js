@@ -1,21 +1,25 @@
 const convertPokemonToHtml = (pokemon) => {
 
     return `<li class="pokemon">
-                <span class="number">#001</span>
+                <span class="number">#${pokemon.id}</span>
                 <span class="name">${pokemon.name}</span>
                 <div class="description">
                     <ol class="types">
-                        <li class="type">grass</li>
-                        <li class="type">poison</li>
+                        ${pokemon.types.map(type => `<li class="type">${type.type.name}</li>`).join('')}
                     </ol>
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="${pokemon.name}">
+                    <img src="${pokemon.sprites.other.dream_world.front_default}" alt="${pokemon.name}">
                 </div>
             </li>`;
 }
 
 pokeAPI.getPokemons()
     .then(
-        (pokemonList)=>{
-            document.querySelector('.pokemons').innerHTML = pokemonList.map(convertPokemonToHtml).join('');
+        (pokemon)=>{
+            console.log(pokemon);
+            document.querySelector('.pokemons').innerHTML = pokemon.map(convertPokemonToHtml).join('');
         }
     );
+
+
+
+
