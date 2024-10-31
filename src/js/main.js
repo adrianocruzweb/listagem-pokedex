@@ -1,7 +1,5 @@
 const convertPokemonToHtml = (pokemon) => {
 
-    console.log(pokemon);
-
     return `<li class="pokemon">
                 <span class="number">#001</span>
                 <span class="name">${pokemon.name}</span>
@@ -18,7 +16,6 @@ const convertPokemonToHtml = (pokemon) => {
 pokeAPI.getPokemons()
     .then(
         (pokemonList)=>{
-            const pokemonHtml = pokemonList.map(item => convertPokemonToHtml(item)).join('');
-            document.querySelector('.pokemons').innerHTML = pokemonHtml;
+            document.querySelector('.pokemons').innerHTML = pokemonList.map(convertPokemonToHtml).join('');
         }
     );
